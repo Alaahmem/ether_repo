@@ -1,0 +1,76 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"X7BrRU_GW-\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Add activity\",\"col\":3}},{\"id\":\"4W6p5RQFtG\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"add city\",\"col\":3}},{\"id\":\"xu5N39K_WI\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Test Doc\",\"col\":3}},{\"id\":\"wR0OgHD0yw\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"add town\",\"col\":4}},{\"id\":\"GJzMA-gKzD\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"add city\",\"col\":4}},{\"id\":\"9yT6sPCTV0\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"add activity\",\"col\":4}}]",
+ "creation": "2024-02-21 16:29:46.083506",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "color-review-points",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Super Admin Space",
+ "links": [],
+ "modified": "2024-03-04 09:06:56.791007",
+ "modified_by": "Administrator",
+ "module": "ether",
+ "name": "Super Admin Space",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [
+  {
+   "document_type": "activity",
+   "label": "add activity",
+   "quick_list_filter": "[]"
+  },
+  {
+   "document_type": "City",
+   "label": "add city",
+   "quick_list_filter": "[]"
+  },
+  {
+   "document_type": "Town",
+   "label": "add town",
+   "quick_list_filter": "[]"
+  }
+ ],
+ "roles": [
+  {
+   "role": "Administrator"
+  },
+  {
+   "role": "Super Admin"
+  }
+ ],
+ "sequence_id": 1.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "add city",
+   "link_to": "City",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Test Doc",
+   "link_to": "test doc",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Add activity",
+   "link_to": "activity",
+   "stats_filter": "[]",
+   "type": "DocType"
+  }
+ ],
+ "title": "Super Admin Space"
+}

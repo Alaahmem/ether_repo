@@ -1,0 +1,137 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "Format: registration-{first_name}",
+ "creation": "2024-03-15 12:04:19.853680",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "status",
+  "first_name",
+  "last_name",
+  "full_name",
+  "birthday",
+  "contact_number",
+  "email",
+  "password",
+  "confirm_password",
+  "city",
+  "section_break_ot5tg",
+  "driving_license",
+  "column_break_btlma",
+  "traffic_licence"
+ ],
+ "fields": [
+  {
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "label": "First name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Full name ",
+   "read_only": 1
+  },
+  {
+   "fieldname": "birthday",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Birthday",
+   "reqd": 1
+  },
+  {
+   "fieldname": "password",
+   "fieldtype": "Password",
+   "label": "Password",
+   "reqd": 1
+  },
+  {
+   "fieldname": "confirm_password",
+   "fieldtype": "Password",
+   "label": "Confirm password",
+   "reqd": 1
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Link",
+   "label": "City",
+   "options": "City",
+   "reqd": 1
+  },
+  {
+   "fieldname": "driving_license",
+   "fieldtype": "Attach",
+   "label": "Driving license"
+  },
+  {
+   "fieldname": "traffic_licence",
+   "fieldtype": "Attach",
+   "label": "Traffic licence"
+  },
+  {
+   "fieldname": "column_break_btlma",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_ot5tg",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "label": "Last name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "options": "Email",
+   "reqd": 1
+  },
+  {
+   "default": "+216-",
+   "fieldname": "contact_number",
+   "fieldtype": "Phone",
+   "in_list_view": 1,
+   "label": "Contact number"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Read Only",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "status"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-03-25 11:37:06.780021",
+ "modified_by": "Administrator",
+ "module": "ether",
+ "name": "Delivery Registration",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

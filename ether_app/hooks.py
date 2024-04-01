@@ -5,6 +5,15 @@ app_description = "Control panels for managing a den"
 app_email = "hmemalaa8@gmail.com"
 app_license = "MIT"
 
+
+fixtures = ["Custom Field"]
+
+template_apps = ['ether_app', 'frappe'] # lel login page 
+
+# app_include_js = ["assets/js/custom_login_app.min.js"]
+# app_include_css = ["assets/css/custom_login_app.css"]
+
+
 # Includes in <head>
 # ------------------
 
@@ -22,6 +31,9 @@ app_license = "MIT"
 # include js, css files in header of web form
 # webform_include_js = {"doctype": "public/js/doctype.js"}
 # webform_include_css = {"doctype": "public/css/doctype.css"}
+
+# webform_include_js = {"delivery-registration": "ether/doctype/delivery_registration/delivery_registration.js"}
+# webform_include_js = {"Delivery Registration": "ether/doctype/delivery_registration/delivery_registration.js"}
 
 # include js in page
 # page_js = {"page" : "public/js/file.js"}

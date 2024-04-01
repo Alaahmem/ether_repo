@@ -1,0 +1,201 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "test.###",
+ "creation": "2024-02-21 14:09:49.910274",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "photo",
+  "first_name",
+  "last_name",
+  "email",
+  "column_break_k92yu",
+  "contact_number",
+  "address",
+  "description",
+  "amended_from",
+  "select",
+  "phone",
+  "barra",
+  "attach",
+  "ffff",
+  "sect_section",
+  "op1",
+  "op2",
+  "mdp",
+  "ttt",
+  "bot",
+  "pourcentage"
+ ],
+ "fields": [
+  {
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "label": "first name"
+  },
+  {
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "label": "last name"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "email"
+  },
+  {
+   "fieldname": "column_break_k92yu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "contact_number",
+   "fieldtype": "Data",
+   "label": "contact number"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Geolocation",
+   "label": "address"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "description"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "test doc",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "select",
+   "fieldtype": "Select",
+   "label": "select",
+   "options": "op1\nop2\nop3"
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Phone",
+   "label": "phone"
+  },
+  {
+   "fieldname": "barra",
+   "fieldtype": "Barcode",
+   "label": "barra"
+  },
+  {
+   "fieldname": "attach",
+   "fieldtype": "Attach",
+   "label": "attach"
+  },
+  {
+   "fieldname": "sect_section",
+   "fieldtype": "Section Break",
+   "label": "sect"
+  },
+  {
+   "default": "0",
+   "fieldname": "op1",
+   "fieldtype": "Check",
+   "label": "op1"
+  },
+  {
+   "default": "0",
+   "fieldname": "op2",
+   "fieldtype": "Check",
+   "label": "op2",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "ffff",
+   "fieldtype": "Fold",
+   "label": "ffff"
+  },
+  {
+   "fieldname": "mdp",
+   "fieldtype": "Password",
+   "label": "mdp",
+   "no_copy": 1
+  },
+  {
+   "fieldname": "ttt",
+   "fieldtype": "Currency",
+   "label": "ttt",
+   "precision": "2"
+  },
+  {
+   "fieldname": "bot",
+   "fieldtype": "Button",
+   "label": "bot"
+  },
+  {
+   "fieldname": "photo",
+   "fieldtype": "Attach Image",
+   "label": "photo"
+  },
+  {
+   "fieldname": "pourcentage",
+   "fieldtype": "Datetime",
+   "label": "pourcentage"
+  }
+ ],
+ "image_field": "photo",
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-02-29 14:43:46.632886",
+ "modified_by": "Administrator",
+ "module": "ether",
+ "name": "test doc",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Super Admin",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "permlevel": 3,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

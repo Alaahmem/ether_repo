@@ -1,0 +1,162 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "Format: registration-{company_name}",
+ "creation": "2024-03-01 08:48:27.069803",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "status",
+  "company_name",
+  "contact_number",
+  "country",
+  "column_break_nvfrb",
+  "email",
+  "password",
+  "confirm_password",
+  "section_break_arfsq",
+  "activity",
+  "commercial_register",
+  "column_break_u0dfy",
+  "bank_iban",
+  "currency",
+  "verification_code",
+  "section_break_kfrao",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "company_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Company name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "options": "Email"
+  },
+  {
+   "default": "+216-",
+   "fieldname": "contact_number",
+   "fieldtype": "Phone",
+   "in_list_view": 1,
+   "label": "Contact number"
+  },
+  {
+   "fieldname": "bank_iban",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Bank IBAN"
+  },
+  {
+   "fieldname": "commercial_register",
+   "fieldtype": "Attach",
+   "label": "Commercial register"
+  },
+  {
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "label": "country",
+   "options": "Country",
+   "reqd": 1
+  },
+  {
+   "fieldname": "activity",
+   "fieldtype": "Link",
+   "label": "Activity",
+   "options": "activity"
+  },
+  {
+   "fieldname": "password",
+   "fieldtype": "Password",
+   "label": "Password",
+   "reqd": 1
+  },
+  {
+   "fieldname": "confirm_password",
+   "fieldtype": "Password",
+   "label": "Confirm password",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "company registration"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "company registration"
+  },
+  {
+   "fieldname": "column_break_u0dfy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_kfrao",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "TND",
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "currency",
+   "options": "Currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_nvfrb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_arfsq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Read Only",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "status"
+  },
+  {
+   "fieldname": "verification_code",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Verification Code"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-03-26 09:31:10.429905",
+ "modified_by": "Administrator",
+ "module": "ether",
+ "name": "company registration",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,115 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:full_name",
+ "creation": "2024-03-15 12:35:16.638431",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "first_name",
+  "last_name",
+  "full_name",
+  "birthday",
+  "contact_number",
+  "email",
+  "city",
+  "branch",
+  "section_break_endhl",
+  "driving_license",
+  "column_break_axb2t",
+  "traffic_licence"
+ ],
+ "fields": [
+  {
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "label": "First name"
+  },
+  {
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "label": "Last name"
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Full name",
+   "unique": 1
+  },
+  {
+   "fieldname": "birthday",
+   "fieldtype": "Date",
+   "label": "Birthday"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Link",
+   "label": "City",
+   "options": "City"
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "label": "Branch",
+   "options": "Branch",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_endhl",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "driving_license",
+   "fieldtype": "Attach",
+   "label": "Driving license"
+  },
+  {
+   "fieldname": "column_break_axb2t",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "traffic_licence",
+   "fieldtype": "Attach",
+   "label": "Traffic licence"
+  },
+  {
+   "default": "+216-",
+   "fieldname": "contact_number",
+   "fieldtype": "Phone",
+   "label": "Contact number"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "options": "Email"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-03-25 11:37:17.789695",
+ "modified_by": "Administrator",
+ "module": "ether",
+ "name": "Deliveryman",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
