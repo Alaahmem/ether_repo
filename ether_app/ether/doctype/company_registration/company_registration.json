@@ -10,6 +10,7 @@
  "field_order": [
   "status",
   "company_name",
+  "company_logo",
   "contact_number",
   "country",
   "column_break_nvfrb",
@@ -73,12 +74,17 @@
    "options": "activity"
   },
   {
+   "default": "Root@123",
+   "fetch_if_empty": 1,
    "fieldname": "password",
    "fieldtype": "Password",
    "label": "Password",
+   "options": "Password",
    "reqd": 1
   },
   {
+   "default": "Root@123",
+   "fetch_if_empty": 1,
    "fieldname": "confirm_password",
    "fieldtype": "Password",
    "label": "Confirm password",
@@ -121,6 +127,7 @@
    "fieldtype": "Section Break"
   },
   {
+   "default": "Pending",
    "fieldname": "status",
    "fieldtype": "Read Only",
    "hidden": 1,
@@ -132,11 +139,16 @@
    "fieldtype": "Data",
    "hidden": 1,
    "label": "Verification Code"
+  },
+  {
+   "fieldname": "company_logo",
+   "fieldtype": "Attach Image",
+   "label": "Company logo"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-03-26 09:31:10.429905",
+ "modified": "2024-05-09 12:00:00.722491",
  "modified_by": "Administrator",
  "module": "ether",
  "name": "company registration",
@@ -158,5 +170,18 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [
+  {
+   "color": "Blue",
+   "title": "Accepted"
+  },
+  {
+   "color": "Red",
+   "title": "Rejected"
+  },
+  {
+   "color": "Yellow",
+   "title": "Pending"
+  }
+ ]
 }

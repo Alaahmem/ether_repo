@@ -1,0 +1,50 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"4dePQgJ_Ji\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Delivery Registration\",\"col\":3}},{\"id\":\"gmWZuNhNmG\",\"type\":\"spacer\",\"data\":{\"col\":9}},{\"id\":\"aghFykbVbZ\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Delivery Registration Pending\",\"col\":4}},{\"id\":\"hmL5BCwzLb\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Delivery Registration Accepted\",\"col\":4}},{\"id\":\"OClwwmvstH\",\"type\":\"number_card\",\"data\":{\"number_card_name\":\"Delivery Registration Rejected\",\"col\":4}}]",
+ "creation": "2024-04-03 03:07:38.557418",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "milestone",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Delivery application",
+ "links": [],
+ "modified": "2024-04-04 00:32:03.653177",
+ "modified_by": "Administrator",
+ "module": "ether",
+ "name": "Delivery application",
+ "number_cards": [
+  {
+   "label": "Delivery Registration Pending",
+   "number_card_name": "Delivery Registration Pending"
+  },
+  {
+   "label": "Delivery Registration Accepted",
+   "number_card_name": "Delivery Registration Accepted"
+  },
+  {
+   "label": "Delivery Registration Rejected",
+   "number_card_name": "Delivery Registration Rejected"
+  }
+ ],
+ "owner": "Administrator",
+ "parent_page": "Delivery driver management",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 25.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "New",
+   "label": "Delivery Registration",
+   "link_to": "Delivery Registration",
+   "stats_filter": "[]",
+   "type": "DocType"
+  }
+ ],
+ "title": "Delivery application"
+}

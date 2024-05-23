@@ -7,6 +7,14 @@ from frappe import _
 from frappe.utils.password import get_decrypted_password, check_password, set_encrypted_password, update_password
 
 
+
+def send_rejection_email(email, rejection_reason):
+		# Envoyer un e-mail au livreur avec la raison du rejet
+		subject = "Application Rejected"
+		message = f"Dear Company,\n\nWe regret to inform you that your application has been rejected. Reason: {rejection_reason}"
+		frappe.sendmail(recipients=[email], subject=subject, message=message)
+
+
 class DeliveryRegistration(Document):
 	# pass
 	
@@ -83,7 +91,7 @@ class DeliveryRegistration(Document):
 			return _('Error accepting request.')
 
 	@frappe.whitelist()
-	def reject_delivery_registration(self, docname):
+	def reject_delivery_registration(self, docname, rejection_reason):
 		try:
 			# Récupérer les données de la demande
 			registration_doc = frappe.get_doc("Delivery Registration", docname)
@@ -106,9 +114,10 @@ class DeliveryRegistration(Document):
 				registration_doc.save()
 
 				frappe.msgprint(_("User and delivery successfully deleted."))
-				return
+				
+			# Send email to the deliveryman with the rejection reason
+			send_rejection_email(registration_doc.email, rejection_reason)
 
-			# Si la delivery ou l'User n'existent pas, mettre à jour le statut de la demande
 			registration_doc.status = "Rejected"
 			registration_doc.save()
 			frappe.msgprint(_('Application successfully refused.'))

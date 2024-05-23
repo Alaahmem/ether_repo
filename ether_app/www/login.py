@@ -18,89 +18,112 @@ no_cache = True
 
 
 def get_context(context):
-	redirect_to = frappe.local.request.args.get("redirect-to")
+    redirect_to = frappe.local.request.args.get("redirect-to")
 
-	if frappe.session.user != "Guest":
-		if not redirect_to:
-			if frappe.session.data.user_type == "Website User":
-				redirect_to = get_home_page()
-			else:
-				redirect_to = "/app"
+    if frappe.session.user != "Guest":
+        if not redirect_to:
+            if frappe.session.data.user_type == "Website User":
+                redirect_to = get_home_page()
+            else:
+                redirect_to = "/app"
 
-		if redirect_to != "login":
-			frappe.local.flags.redirect_location = redirect_to
-			raise frappe.Redirect
+        if redirect_to != "login":
+            frappe.local.flags.redirect_location = redirect_to
+            raise frappe.Redirect
 
-	context.no_header = True
-	context.for_test = "login.html"
-	context["title"] = "Login"
-	context["provider_logins"] = []
-	context["disable_signup"] = cint(frappe.get_website_settings("disable_signup"))
-	context["disable_user_pass_login"] = cint(frappe.get_system_settings("disable_user_pass_login"))
-	context["logo"] = frappe.get_website_settings("app_logo") or frappe.get_hooks("app_logo_url")[-1]
-	context["app_name"] = (
-		frappe.get_website_settings("app_name") or frappe.get_system_settings("app_name") or _("Frappe")
-	)
+    context.no_header = True
+    context.for_test = "login.html"
+    context["title"] = "Login"
+    context["provider_logins"] = []
+    context["disable_signup"] = cint(frappe.get_website_settings("disable_signup"))
+    context["disable_user_pass_login"] = cint(frappe.get_system_settings("disable_user_pass_login"))
+    context["logo"] = frappe.get_website_settings("app_logo") or frappe.get_hooks("app_logo_url")[-1]
+    context["app_name"] = (
+        frappe.get_website_settings("app_name") or frappe.get_system_settings("app_name") or _("Frappe")
+    )
 
-	signup_form_template = frappe.get_hooks("signup_form_template")
-	if signup_form_template and len(signup_form_template):
-		path = signup_form_template[-1]
-		if not guess_is_path(path):
-			path = frappe.get_attr(signup_form_template[-1])()
-	else:
-		path = "frappe/templates/signup.html"
+    signup_form_template = frappe.get_hooks("signup_form_template")
+    if signup_form_template and len(signup_form_template):
+        path = signup_form_template[-1]
+        if not guess_is_path(path):
+            path = frappe.get_attr(signup_form_template[-1])()
+    else:
+        path = "frappe/templates/signup.html"
 
-	if path:
-		context["signup_form_template"] = frappe.get_template(path).render()
+    if path:
+        context["signup_form_template"] = frappe.get_template(path).render()
 
-	providers = frappe.get_all(
-		"Social Login Key",
-		filters={"enable_social_login": 1},
-		fields=["name", "client_id", "base_url", "provider_name", "icon"],
-		order_by="name",
-	)
+    providers = frappe.get_all(
+        "Social Login Key",
+        filters={"enable_social_login": 1},
+        fields=["name", "client_id", "base_url", "provider_name", "icon"],
+        order_by="name",
+    )
 
-	for provider in providers:
-		client_secret = get_decrypted_password("Social Login Key", provider.name, "client_secret")
-		if not client_secret:
-			continue
+    for provider in providers:
+        client_secret = get_decrypted_password("Social Login Key", provider.name, "client_secret")
+        if not client_secret:
+            continue
 
-		icon = None
-		if provider.icon:
-			if provider.provider_name == "Custom":
-				icon = get_icon_html(provider.icon, small=True)
-			else:
-				icon = f"<img src={escape_html(provider.icon)!r} alt={escape_html(provider.provider_name)!r}>"
+        icon = None
+        if provider.icon:
+            if provider.provider_name == "Custom":
+                icon = get_icon_html(provider.icon, small=True)
+            else:
+                icon = f"<img src={escape_html(provider.icon)!r} alt={escape_html(provider.provider_name)!r}>"
 
-		if provider.client_id and provider.base_url and get_oauth_keys(provider.name):
-			context.provider_logins.append(
-				{
-					"name": provider.name,
-					"provider_name": provider.provider_name,
-					"auth_url": get_oauth2_authorize_url(provider.name, redirect_to),
-					"icon": icon,
-				}
-			)
-			context["social_login"] = True
+        if provider.client_id and provider.base_url and get_oauth_keys(provider.name):
+            context.provider_logins.append(
+                {
+                    "name": provider.name,
+                    "provider_name": provider.provider_name,
+                    "auth_url": get_oauth2_authorize_url(provider.name, redirect_to),
+                    "icon": icon,
+                }
+            )
+            context["social_login"] = True
 
-	if cint(frappe.db.get_value("LDAP Settings", "LDAP Settings", "enabled")):
-		from frappe.integrations.doctype.ldap_settings.ldap_settings import LDAPSettings
+    if cint(frappe.db.get_value("LDAP Settings", "LDAP Settings", "enabled")):
+        from frappe.integrations.doctype.ldap_settings.ldap_settings import LDAPSettings
 
-		context["ldap_settings"] = LDAPSettings.get_ldap_client_settings()
+        context["ldap_settings"] = LDAPSettings.get_ldap_client_settings()
 
-	login_label = [_("Email")]
+    login_label = [_("Email")]
 
-	if frappe.utils.cint(frappe.get_system_settings("allow_login_using_mobile_number")):
-		login_label.append(_("Mobile"))
+    if frappe.utils.cint(frappe.get_system_settings("allow_login_using_mobile_number")):
+        login_label.append(_("Mobile"))
 
-	if frappe.utils.cint(frappe.get_system_settings("allow_login_using_user_name")):
-		login_label.append(_("Username"))
+    if frappe.utils.cint(frappe.get_system_settings("allow_login_using_user_name")):
+        login_label.append(_("Username"))
 
-	context["login_label"] = f" {_('or')} ".join(login_label)
+    context["login_label"] = f" {_('or')} ".join(login_label)
 
-	context["login_with_email_link"] = frappe.get_system_settings("login_with_email_link")
+    context["login_with_email_link"] = frappe.get_system_settings("login_with_email_link")
 
-	return context
+    # Vérifiez si l'e-mail est invalide et s'il existe des demandes en attente dans les doctypes Company Registration ou Delivery Registration
+    email = frappe.form_dict.get("email")
+    if email and not frappe.db.exists("User", email):
+        if check_pending_requests(email):
+            context["pending_request_message"] = "Votre demande est en cours de traitement par l'administrateur."
+
+    return context
+
+def check_pending_requests(email):
+    # Vérifier s'il existe des demandes en attente de validation pour cet e-mail
+    pending_requests = False
+
+    # Vérifiez s'il existe des demandes en attente de validation dans le doctype Company Registration
+    company_requests = frappe.get_all("company registration", filters={"email": email, "status": "Pending"})
+    if company_requests:
+        pending_requests = True
+
+    # Vérifiez s'il existe des demandes en attente de validation dans le doctype Delivery Registration
+    delivery_requests = frappe.get_all("Delivery Registration", filters={"email": email, "status": "Pending"})
+    if delivery_requests:
+        pending_requests = True
+
+    return pending_requests
+
 
 
 @frappe.whitelist(allow_guest=True)

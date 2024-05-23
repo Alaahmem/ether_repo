@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"X7BrRU_GW-\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Add activity\",\"col\":3}},{\"id\":\"4W6p5RQFtG\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"add city\",\"col\":3}},{\"id\":\"xu5N39K_WI\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Test Doc\",\"col\":3}},{\"id\":\"wR0OgHD0yw\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"add town\",\"col\":4}},{\"id\":\"GJzMA-gKzD\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"add city\",\"col\":4}},{\"id\":\"9yT6sPCTV0\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"add activity\",\"col\":4}}]",
+ "content": "[{\"id\":\"wR0OgHD0yw\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"add town\",\"col\":4}},{\"id\":\"GJzMA-gKzD\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"add city\",\"col\":4}},{\"id\":\"9yT6sPCTV0\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"add activity\",\"col\":4}},{\"id\":\"9T5Wc1MpOz\",\"type\":\"paragraph\",\"data\":{\"text\":\"Registration\",\"col\":9}},{\"id\":\"Cxq9pmpaHx\",\"type\":\"card\",\"data\":{\"card_name\":\"Registration\",\"col\":5}}]",
  "creation": "2024-02-21 16:29:46.083506",
  "custom_blocks": [],
  "docstatus": 0,
@@ -11,8 +11,38 @@
  "idx": 0,
  "is_hidden": 0,
  "label": "Super Admin Space",
- "links": [],
- "modified": "2024-03-04 09:06:56.791007",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Registration",
+   "link_count": 2,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Company Registration",
+   "link_count": 0,
+   "link_to": "company registration",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Delivery Registration",
+   "link_count": 0,
+   "link_to": "Delivery Registration",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2024-04-03 22:45:26.986934",
  "modified_by": "Administrator",
  "module": "ether",
  "name": "Super Admin Space",
@@ -46,31 +76,6 @@
   }
  ],
  "sequence_id": 1.0,
- "shortcuts": [
-  {
-   "color": "Grey",
-   "doc_view": "List",
-   "label": "add city",
-   "link_to": "City",
-   "stats_filter": "[]",
-   "type": "DocType"
-  },
-  {
-   "color": "Grey",
-   "doc_view": "List",
-   "label": "Test Doc",
-   "link_to": "test doc",
-   "stats_filter": "[]",
-   "type": "DocType"
-  },
-  {
-   "color": "Grey",
-   "doc_view": "List",
-   "label": "Add activity",
-   "link_to": "activity",
-   "stats_filter": "[]",
-   "type": "DocType"
-  }
- ],
+ "shortcuts": [],
  "title": "Super Admin Space"
 }

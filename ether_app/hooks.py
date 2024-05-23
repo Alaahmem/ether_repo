@@ -8,7 +8,8 @@ app_license = "MIT"
 
 fixtures = ["Custom Field"]
 
-template_apps = ['ether_app', 'frappe'] # lel login page 
+# template_apps = ['ether_app', 'frappe'] # lel login page  
+
 
 # app_include_js = ["assets/js/custom_login_app.min.js"]
 # app_include_css = ["assets/css/custom_login_app.css"]

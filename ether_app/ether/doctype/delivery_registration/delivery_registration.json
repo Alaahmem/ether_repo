@@ -13,10 +13,12 @@
   "last_name",
   "full_name",
   "birthday",
+  "column_break_nqtth",
   "contact_number",
   "email",
   "password",
   "confirm_password",
+  "section_break_biisf",
   "city",
   "section_break_ot5tg",
   "driving_license",
@@ -45,12 +47,14 @@
    "reqd": 1
   },
   {
+   "default": "Root@123",
    "fieldname": "password",
    "fieldtype": "Password",
    "label": "Password",
    "reqd": 1
   },
   {
+   "default": "Root@123",
    "fieldname": "confirm_password",
    "fieldtype": "Password",
    "label": "Confirm password",
@@ -102,16 +106,25 @@
    "label": "Contact number"
   },
   {
+   "default": "Pending",
    "fieldname": "status",
    "fieldtype": "Read Only",
    "hidden": 1,
    "in_list_view": 1,
    "label": "status"
+  },
+  {
+   "fieldname": "column_break_nqtth",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_biisf",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-03-25 11:37:06.780021",
+ "modified": "2024-04-03 01:37:04.399643",
  "modified_by": "Administrator",
  "module": "ether",
  "name": "Delivery Registration",
@@ -133,5 +146,18 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [
+  {
+   "color": "Green",
+   "title": "Accepted"
+  },
+  {
+   "color": "Red",
+   "title": "Rejected"
+  },
+  {
+   "color": "Yellow",
+   "title": "Pending"
+  }
+ ]
 }

@@ -9,6 +9,12 @@ from frappe import _
 from frappe.utils.password import get_decrypted_password, check_password, set_encrypted_password, update_password
 # from frappe.utils.password import validate_password
 
+def send_rejection_email(company_email, rejection_reason):
+		# Envoyer un e-mail à la société avec la raison du rejet
+		subject = "Application Rejected"
+		message = f"Dear Company,\n\nWe regret to inform you that your application has been rejected. Reason: {rejection_reason}"
+		frappe.sendmail(recipients=[company_email], subject=subject, message=message)
+		# print(f"Company Email: {registration_doc.email}, Rejection Reason: {rejection_reason}")
 
 class companyregistration(Document):
 	@frappe.whitelist()
@@ -28,7 +34,8 @@ class companyregistration(Document):
 					'company_name': registration_doc.company_name,
 					'abbr': registration_doc.company_name,
 					'default_currency': registration_doc.currency,
-					'country': registration_doc.country
+					'country': registration_doc.country,
+					'company_logo': registration_doc.company_logo
 					# Ajoutez d'autres champs nécessaires pour créer une Company
 				})
 				new_company.insert(ignore_permissions=True)
@@ -39,74 +46,51 @@ class companyregistration(Document):
 					'first_name': registration_doc.company_name,
 					'email': registration_doc.email,
 					'send_welcome_email': 1,
-					# 'new_password': registration_doc.confirm_password
-					# 'password': registration_doc.password
-					# 'password': frappe.generate_hash(registration_doc.password)
-					# Ajoutez d'autres champs nécessaires pour créer un utilisateur
+					'user_image': registration_doc.company_logo
+
 				})
 				new_user.append('roles', {'role': 'Company'})
 				new_user.insert(ignore_permissions=True)
-
 				new_user.new_password = registration_doc.get_password("password")
 				# new_user.new_password = get_decrypted_password(registration_doc.name, registration_doc.password)
-
 				new_user.save()
 				registration_doc.status = "Accepted"
 				registration_doc.save()
 				frappe.msgprint(_('Successful application.'))
-
-				
-				# update_password(new_user.first_name, registration_doc.password)
-				# frappe.msgprint(new_user.new_password)
-				# Mettre à jour le statut de la demande
-				# frappe.msgprint(frappe.generate_hash(registration_doc.password))
-
-				# new_user.set_password(frappe.generate_hash(registration_doc.password))
-				# return _('Demande acceptée avec succès.')
-		# except Exception as e:
-		# 	frappe.log_error(e)
-		# 	return _('Error accepting request.')
 		
 		except Exception as e:
 			frappe.log_error(e)
 			print(f"Error accepting request: {e}") 
-			frappe.msgprint(e)
+			frappe.log_error(e)
 			return _('Error accepting request.')
 
+	
+
+
 	@frappe.whitelist()
-	def reject_company_registration(self, docname):
+	def reject_company_registration(self, docname, rejection_reason):
 		try:
 			# Récupérer les données de la demande
 			registration_doc = frappe.get_doc("company registration", docname)
 
-			# Vérifier si la demande a déjà été rejetée
-			if registration_doc.status == "Rejected":
-				frappe.msgprint(_("The company's application has already been rejected."))
-				return
-
-			# Vérifier si la Company et l'User existent avant de les supprimer
 			if frappe.db.exists("Company", registration_doc.company_name) and frappe.db.exists("User", registration_doc.email):
-				# Supprimer l'utilisateur
-				frappe.delete_doc("User", registration_doc.email)
-				
-				# Supprimer la société
+				frappe.delete_doc("User", registration_doc.email) 	
 				frappe.delete_doc("Company", registration_doc.company_name)
+				frappe.msgprint(_("User and Company successfully deleted."))
 
-				# Mettre à jour le statut de la demande
-				registration_doc.status = "Rejected"
-				registration_doc.save()
+			# Send email to the company with the rejection reason
+			send_rejection_email(registration_doc.email, rejection_reason)
 
-				frappe.msgprint(_("User and company successfully deleted."))
-				return
-
-			# Si la Company ou l'User n'existent pas, mettre à jour le statut de la demande
+			# Mettre à jour le statut de la demande
 			registration_doc.status = "Rejected"
 			registration_doc.save()
-
 			frappe.msgprint(_('Application successfully refused.'))
 		except Exception as e:
 			frappe.log_error(e)
 			frappe.msgprint(_('Error in refusal of application.'))
+
+		
+
 
 
 	# def on_update(self):
@@ -120,32 +104,3 @@ class companyregistration(Document):
 	# 	else:
 	# 		# Les codes de confirmation ne correspondent pas, vous pouvez annuler la soumission du document et afficher un message d'erreur
 	# 		frappe.throw("Le code de confirmation est incorrect. Veuillez réessayer.") 
-
-
-
-
-
-
-	# @frappe.whitelist()	
-	# def remove_company_and_user(self, docname):
-	# 	# Logique pour supprimer l'utilisateur et la société
-	# 	try:
-	# 		# Récupérer les données de la demande
-	# 		registration_doc = frappe.get_doc("company registration", docname)
-
-	# 		# Supprimer la société
-	# 		if frappe.db.exists("Company", registration_doc.company_name):
-	# 			frappe.delete_doc("Company", registration_doc.company_name)
-	# 		else:
-	# 			return _("company dose note exist")
-	# 		# Supprimer l'utilisateur
-	# 		if frappe.db.exists("User", registration_doc.email):
-	# 			frappe.delete_doc("User", registration_doc.email)
-	# 		else:
-	# 			frappe.msgprint(_("user dose note exist"))
-
-	# 		return _("Utilisateur et société supprimés avec succès.")
-
-	# 	except Exception as e:
-	# 		frappe.log_error(e)
-	# 		return _("Erreur lors de la suppression de l'utilisateur et de la société.")

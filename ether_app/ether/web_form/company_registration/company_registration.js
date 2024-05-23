@@ -12,72 +12,92 @@ frappe.ready(function() {
     // }
 
 
-    frappe.web_form.after_load = () => {
-        // Attachez une fonction à exécuter après le chargement du formulaire web
-        console.log('Click detected!');
-        // Écoutez l'événement de clic sur le bouton "Next"
-        var nextButton = frappe.web_form.page.wrapper.find('.btn-next');
-    
-        nextButton.on('click', function() {
-            // Votre code ici
-            frappe.msgprint('you clicked next');
-        });
-    };
-    
     // frappe.web_form.after_load = () => {
     //     // Attachez une fonction à exécuter après le chargement du formulaire web
-
+    //     console.log('Click detectedddddddddd!');
     //     // Écoutez l'événement de clic sur le bouton "Next"
-
     //     var nextButton = frappe.web_form.page.wrapper.find('.btn-next');
+        
 
     //     nextButton.on('click', function() {
-    //         // Récupérez l'e-mail de l'utilisateur depuis le champ du web form
-    //         frappe.msgprint('you click next test');
-    //         console.log('asba');
-    //         // var email = frappe.web_form.get_value('email');
-
-    //         // // Vérifiez si l'e-mail est valide
-    //         // if (email) {
-    //         //     // Appelez une méthode serveur pour envoyer le code de vérification par e-mail
-    //         //     frappe.call({
-    //         //         method: 'send_verification_code',
-    //         //         args: {
-    //         //             email: email
-    //         //         },
-    //         //         callback: function(response) {
-    //         //             if (response.message === 'success') {
-    //         //                 // Le code de vérification a été envoyé avec succès
-    //         //                 frappe.msgprint('Un code de vérification a été envoyé à votre adresse e-mail.');
-    //         //             } else {
-    //         //                 // Une erreur s'est produite lors de l'envoi du code de vérification
-    //         //                 frappe.msgprint('Une erreur s\'est produite lors de l\'envoi du code de vérification.');
-    //         //             }
-    //         //         }
-    //         //     });
-    //         // } else {
-    //         //     // Affichez un message si l'e-mail n'est pas valide
-    //         //     frappe.msgprint('Veuillez fournir une adresse e-mail valide.');
-    //         // }
+    //         // Votre code ici
+    //         frappe.msgprint('you clicked next');
     //     });
-    // }
 
+    //     // frappe.web_form.on('email', (field, value)=>{
+    //     //     console.log(field, value);
+    //     // })
+    // };
+    
+    frappe.web_form.after_load = () => {
+        // Attachez une fonction à exécuter après le chargement du formulaire web
+
+        // Écoutez l'événement de clic sur le bouton "Next"
+
+        var nextButton = frappe.web_form.page.wrapper.find('.btn-next');
+
+        nextButton.on('click', function() {
+            // Récupérez l'e-mail de l'utilisateur depuis le champ du web form
+            var email = frappe.web_form.get_value('email');
+
+            // Vérifiez si l'e-mail est valide
+            if (email) {
+                // Appelez une méthode serveur pour envoyer le code de vérification par e-mail
+                frappe.call({
+                    method: 'send_verification_code',
+                    args: {
+                        email: email
+                    },
+                    callback: function(response) {
+                        if (response.message === 'success') {
+                            // Le code de vérification a été envoyé avec succès
+                            frappe.msgprint('Un code de vérification a été envoyé à votre adresse e-mail.');
+                        } else {
+                            // Une erreur s'est produite lors de l'envoi du code de vérification
+                            frappe.msgprint('Une erreur s\'est produite lors de l\'envoi du code de vérification.');
+                        }
+                    }
+                });
+            } else {
+                // Affichez un message si l'e-mail n'est pas valide
+                frappe.msgprint('Veuillez fournir une adresse e-mail valide.');
+            }
+        });
+    }
+    
     frappe.web_form.validate = () => {
         // var email_id = frappe.web_form.get_value("email");
         var passwordVal = frappe.web_form.get_value("password");
-        var confirmPasswordVal = frappe.web_form.get_value("confirm_password");
-        
-        // Vérification de l'e-mail
-        // var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        // if (!mailformat.test(email_id) && email_id) {
-        //     frappe.msgprint(__("Enter a valid email address"));
-        //     return false;
-        // }
-        
+        var confirmPasswordVal = frappe.web_form.get_value("confirm_password");        
         // Vérification que les champs "Password" et "Confirm password" correspondent
         if (passwordVal !== confirmPasswordVal) {
             frappe.msgprint(__("The 'Password' and 'Confirm password' fields must match."));
             return false; 
+        }
+        if (passwordVal.length < 8) {
+            frappe.msgprint(__("Le mot de passe doit contenir au moins 8 caractères."));
+            return false;
+        }
+        
+        // Vérifier la présence de caractères spéciaux
+        var specialChars = /[!@#$%^&*(),.?":{}|<>]/;
+        if (!specialChars.test(passwordVal)) {
+            frappe.msgprint(__("Le mot de passe doit contenir au moins un caractère spécial."));
+            return false;
+        }
+        
+        // Vérifier la présence de lettres majuscules
+        var upperCaseChars = /[A-Z]/;
+        if (!upperCaseChars.test(passwordVal)) {
+            frappe.msgprint(__("Le mot de passe doit contenir au moins une lettre majuscule."));
+            return false;
+        }
+        
+        // Vérifier la présence de chiffres
+        var numbers = /[0-9]/;
+        if (!numbers.test(passwordVal)) {
+            frappe.msgprint(__("Le mot de passe doit contenir au moins un chiffre."));
+            return false;
         }
     
         return true;

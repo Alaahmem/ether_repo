@@ -1,0 +1,32 @@
+{
+ "charts": [],
+ "content": "[{\"type\":\"header\",\"data\":{\"text\":\"Delivery driver management\"}}]",
+ "creation": "2024-04-03 02:52:55.693852",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "map",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Delivery driver management",
+ "links": [],
+ "modified": "2024-04-03 21:06:38.804145",
+ "modified_by": "Administrator",
+ "module": "ether",
+ "name": "Delivery driver management",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [
+  {
+   "role": "Super Admin"
+  }
+ ],
+ "sequence_id": 4.0,
+ "shortcuts": [],
+ "title": "Delivery driver management"
+}
